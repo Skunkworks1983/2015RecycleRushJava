@@ -19,7 +19,7 @@ public class MecanumDrive extends Command {
 	protected void execute() {
 		double x = Robot.oi.getLeftJoystick().getX(), y = Robot.oi
 				.getLeftJoystick().getY();
-		double fieldAngle = Robot.gyro.getAngle() - Math.tan(y / x);
+		double fieldAngle = Robot.drivebase.gyro.getAngle() - Math.tan(y / x);
 		double xhat = Math.cos(fieldAngle), yhat = Math.sin(fieldAngle);
 
 		double k = 1;	//constant k for change in horizontal direction

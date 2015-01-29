@@ -24,6 +24,9 @@ public class RobotMap {
 	public static final int DRIVE_BASE_FRONT_RIGHT = 1;
 	public static final int DRIVE_BASE_BACK_LEFT = 2;
 	public static final int DRIVE_BASE_BACK_RIGHT = 3;
+	public static final double DRIVE_P = 3.0;
+	public static final double DRIVE_I = 0.0;
+	public static final double DRIVE_D = 5.0;
 	public static final int GYRO_PORT = 0;
 	
 	public static final int ELEVATOR_MOTOR_LEFT_PORT = 4;

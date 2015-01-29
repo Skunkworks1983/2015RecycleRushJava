@@ -7,7 +7,6 @@ import org.usfirst.frc.team1983.robot.subsystems.Elevator;
 import org.usfirst.frc.team1983.robot.subsystems.StackPusher;
 import org.usfirst.frc.team1983.robot.subsystems.ToteIntake;
 
-import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -24,7 +23,6 @@ public class Robot extends IterativeRobot {
 	public static ToteIntake toteintake;
 	public static DriveBase drivebase;
 	public static OI oi;
-	public static Gyro gyro;
 	public static Elevator elevator;
 	public static CanGrabber cangrabber;
 	public static StackPusher stackpusher;
@@ -38,7 +36,6 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		oi = new OI();
 		toteintake = new ToteIntake();
-		gyro = new Gyro(RobotMap.GYRO_PORT);
 		drivebase = new DriveBase();
 		elevator = new Elevator();
 		cangrabber = new CanGrabber();
