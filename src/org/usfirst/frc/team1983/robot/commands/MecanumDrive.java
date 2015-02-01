@@ -1,46 +1,78 @@
 package org.usfirst.frc.team1983.robot.commands;
 
 import org.usfirst.frc.team1983.robot.Robot;
-import org.usfirst.frc.team1983.robot.subsystems.DriveBase.MotorSide;
+import org.usfirst.frc.team1983.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class MecanumDrive extends Command {
 
 	public MecanumDrive() {
+
 	}
 
 	@Override
 	protected void initialize() {
-
+		Robot.drivebase.setSpeed(0, 0, 0, 0);
 	}
 
 	@Override
 	protected void execute() {
-		double x = Robot.oi.getLeftJoystick().getX(), y = Robot.oi
-				.getLeftJoystick().getY();
-		double fieldAngle = Robot.drivebase.gyro.getAngle() - Math.tan(y / x);
-		double xhat = Math.cos(fieldAngle), yhat = Math.sin(fieldAngle);
+		double forward;
+		double right;
+		double clockwise;
 
-		double k = 1;	//constant k for change in horizontal direction
-		double LF, RF, LB, RB;
-		LF = y - yhat;
-		RF = y - yhat;
-		LB = y - yhat;
-		RB = y - yhat;
+		// Get input
+		forward = -Robot.oi.getLeftJoystick().getAxis(Joystick.AxisType.kY);
+		right = Robot.oi.getLeftJoystick().getAxis(Joystick.AxisType.kX);
+		clockwise = Robot.oi.getRightJoystick().getAxis(Joystick.AxisType.kZ);
 
-		if (x - xhat > 0) {
-			LF -= (x - xhat) * k;
-			RF -= (x - xhat) * k;
+		// Adjust for deadband
+		if (Math.abs(forward) < RobotMap.OI_JOYSTICK_DRIVE_DEADBAND) {
+			forward = 0;
+		}
+		if (Math.abs(right) < RobotMap.OI_JOYSTICK_DRIVE_DEADBAND) {
+			right = 0;
+		}
+		if (Math.abs(clockwise) < RobotMap.OI_JOYSTICK_ROT_DEADBAND) {
+			clockwise = 0;
 		} else {
-			LB += (x - xhat) * k;	//the sign is switched here, still needs testing
-			RB += (x - xhat) * k;
+			double sign = clockwise > 0 ? 1.0 : -1.0;
+			clockwise -= RobotMap.OI_JOYSTICK_ROT_DEADBAND * sign;
 		}
 
-		Robot.drivebase.setMotor(MotorSide.FRONTLEFT, LF);
-		Robot.drivebase.setMotor(MotorSide.FRONTRIGHT, RF);
-		Robot.drivebase.setMotor(MotorSide.BACKLEFT, LB);
-		Robot.drivebase.setMotor(MotorSide.BACKRIGHT, RB);
+		// Tweak control
+		clockwise = Math.pow(clockwise, 3.0);
+		clockwise *= RobotMap.DRIVE_JOYSTICK_DEGREES_PER_TICK;
+		forward = Math.pow(forward, 3.0);
+		right = Math.pow(right, 3.0);
+
+		// Adjust rotation for PID input
+		if (Robot.drivebase.getClockwise() < 0.9) {
+			double targetAngle = Robot.drivebase.getTargetAngle() + clockwise;
+			double sign = targetAngle > 180 ? 1.0 : -1.0;
+			targetAngle += 180.0 * sign;
+			targetAngle %= 360.0;
+			targetAngle -= 180.0 * sign;
+			Robot.drivebase.setTargetAngle(targetAngle);
+		}
+
+		// Field oriented corrections
+		if (RobotMap.IS_FIELD_ORIENTED) {
+			double theta = Robot.drivebase.getYaw();
+			theta *= Math.PI / 180.0;
+			double temp = forward * Math.cos(theta) + right * Math.sin(theta);
+			right = -forward * Math.sin(theta) + right * Math.cos(theta);
+			forward = temp;
+		}
+
+		// Slow forward to compensate
+		forward *= RobotMap.DRIVE_ASPECT_RATIO;
+
+		Robot.drivebase.setForward(-forward);
+		Robot.drivebase.setRight(right);
+		Robot.drivebase.execute();
 	}
 
 	@Override
@@ -50,12 +82,12 @@ public class MecanumDrive extends Command {
 
 	@Override
 	protected void end() {
-
+		Robot.drivebase.setSpeed(0.0, 0.0, 0.0, 0.0);
 	}
 
 	@Override
 	protected void interrupted() {
-
+		end();
 	}
 
 }

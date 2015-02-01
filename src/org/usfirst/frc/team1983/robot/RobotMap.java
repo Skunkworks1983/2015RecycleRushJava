@@ -27,7 +27,9 @@ public class RobotMap {
 	public static final double DRIVE_P = 3.0;
 	public static final double DRIVE_I = 0.0;
 	public static final double DRIVE_D = 5.0;
-	public static final int GYRO_PORT = 0;
+	public static final double DRIVE_JOYSTICK_DEGREES_PER_TICK = 8.0;
+	public static final boolean IS_FIELD_ORIENTED = true;
+	public static final double DRIVE_ASPECT_RATIO = 0.5;
 	
 	public static final int ELEVATOR_MOTOR_LEFT_PORT = 4;
 	public static final int ELEVATOR_MOTOR_RIGHT_PORT = 5;
@@ -55,4 +57,6 @@ public class RobotMap {
 	public static final int STACK_PUSHER_SOLENOID_1_PORT = 0;
 	public static final int STACK_PUSHER_SOLENOID_2_PORT = 1;
 	
+	public static final double OI_JOYSTICK_DRIVE_DEADBAND = 0.05;
+	public static final double OI_JOYSTICK_ROT_DEADBAND = 0.15;
 }
