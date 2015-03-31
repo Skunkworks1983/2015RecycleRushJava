@@ -4,6 +4,7 @@ import org.usfirst.frc.team1983.com.PIDOutputWrapper;
 import org.usfirst.frc.team1983.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -13,7 +14,8 @@ public class CanGrabber extends Subsystem {
 	private PIDController pid;
 	private PIDOutputWrapper pidWrapper;
 	private AnalogInput pot;
-	private Talon leftMecMotor, rightMecMotor;
+	private CANTalon leftMecMotor;
+	private CANTalon rightMecMotor;
 
 	public CanGrabber() {
 		pot = new AnalogInput(RobotMap.CAN_GRABBER_ANALOG_INPUT_PORT);
@@ -23,19 +25,19 @@ public class CanGrabber extends Subsystem {
 		pid = new PIDController(RobotMap.CAN_GRABBER_PID_TERM_P,
 				RobotMap.CAN_GRABBER_PID_TERM_I,
 				RobotMap.CAN_GRABBER_PID_TERM_D, pot, pidWrapper);
-		leftMecMotor = new Talon(RobotMap.CAN_GRABBER_MEC_LEFT_MOTOR_PORT);
-		rightMecMotor = new Talon(RobotMap.CAN_GRABBER_MEC_RIGHT_MOTOR_PORT);
+		leftMecMotor = new CANTalon(RobotMap.CAN_GRABBER_MEC_LEFT_MOTOR_PORT);
+		rightMecMotor = new CANTalon(RobotMap.CAN_GRABBER_MEC_RIGHT_MOTOR_PORT);
 	}
 
 	public PIDController getPID() {
 		return pid;
 	}
 	
-	public Talon getLeftMecMotor(){
+	public CANTalon getLeftMecMotor(){
 		return leftMecMotor;
 	}
 	
-	public Talon getRightMecMotor(){
+	public CANTalon getRightMecMotor(){
 		return rightMecMotor;
 	}
 

@@ -4,7 +4,7 @@ package org.usfirst.frc.team1983.robot;
 import org.usfirst.frc.team1983.robot.subsystems.CanGrabber;
 import org.usfirst.frc.team1983.robot.subsystems.DriveBase;
 import org.usfirst.frc.team1983.robot.subsystems.Elevator;
-import org.usfirst.frc.team1983.robot.subsystems.StackPusher;
+import org.usfirst.frc.team1983.robot.subsystems.Pneumatics;
 import org.usfirst.frc.team1983.robot.subsystems.ToteIntake;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -25,7 +25,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static Elevator elevator;
 	public static CanGrabber cangrabber;
-	public static StackPusher stackpusher;
+	public static Pneumatics pneumatics;
 	
     Command autonomousCommand;
 
@@ -39,7 +39,7 @@ public class Robot extends IterativeRobot {
 		drivebase = new DriveBase();
 		elevator = new Elevator();
 		cangrabber = new CanGrabber();
-		stackpusher = new StackPusher();
+		pneumatics = new Pneumatics();
 	}
 	
 	public void disabledPeriodic() {

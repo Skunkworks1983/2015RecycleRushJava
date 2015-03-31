@@ -54,8 +54,20 @@ public class RobotMap {
 	public static final int CAN_GRABBER_MEC_RIGHT_MOTOR_PORT = 7;
 	public static final double CAN_GRABBER_MEC_MOTOR_SPEED = 1;
 	
-	public static final int STACK_PUSHER_SOLENOID_1_PORT = 0;
-	public static final int STACK_PUSHER_SOLENOID_2_PORT = 1;
+	public static final int CAN_INTAKE_LEFT_PORT = 11;
+	public static final int CAN_INTAKE_RIGHT_PORT = 4;
+	
+	public static final int WRIST_PORT_LEFT = 1;
+	public static final int WRIST_PORT_RIGHT = 6;
+	
+	public static final int CLAW_LOCK_LEFT_PORT = 2;
+	public static final int CLAW_LOCK_RIGHT_PORT = 5;
+	
+	public static final int CAN_BURGLAR_PORT_A = 7;
+	public static final int CAN_BURGLAR_PORT_B = 0;
+	
+	public static final int COMPRESSOR_PRESSURE_SENSOR_PORT = 0;
+	public static final int COMPRESSOR_RELAY_PORT = 0;
 	
 	public static final double OI_JOYSTICK_DRIVE_DEADBAND = 0.05;
 	public static final double OI_JOYSTICK_ROT_DEADBAND = 0.15;

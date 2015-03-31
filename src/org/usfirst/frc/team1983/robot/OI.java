@@ -2,7 +2,6 @@ package org.usfirst.frc.team1983.robot;
 
 import org.usfirst.frc.team1983.robot.commands.GoToHeight;
 import org.usfirst.frc.team1983.robot.commands.GrabCan;
-import org.usfirst.frc.team1983.robot.commands.PushStackGroup;
 import org.usfirst.frc.team1983.robot.commands.RaiseArm;
 import org.usfirst.frc.team1983.robot.commands.RaiseArm.ArmPosition;
 import org.usfirst.frc.team1983.robot.commands.RunIntake;
@@ -78,9 +77,7 @@ public class OI {
 		raiseArm.whenPressed(new RaiseArm(ArmPosition.RAISE));
 		grabCan.whenPressed(new GrabCan());
 		
-		toteIntakeOvr.whenPressed(new RunIntake());
-		
-		pushStackOut.whenPressed(new PushStackGroup());
+		toteIntakeOvr.whenPressed(new RunIntake());		
 	}
 	
 	public Joystick getLeftJoystick(){
