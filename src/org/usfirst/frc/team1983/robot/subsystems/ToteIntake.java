@@ -18,7 +18,7 @@ public class ToteIntake extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
-		setDefaultCommand(new RunIntake());
+		setDefaultCommand(new RunIntake(RobotMap.TOTE_INTAKE_MOTOR_SPEED));
 	}
 
 	public void setMotor(float speed) {

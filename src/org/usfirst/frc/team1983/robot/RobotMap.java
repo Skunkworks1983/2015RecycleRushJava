@@ -17,7 +17,7 @@ public class RobotMap {
     // public static int rangefinderModule = 1;
 	
 	public static final int TOTE_INTAKE_MOTOR_PORT = 0;
-	public static final float TOTE_INTAKE_MOTOR_SPEED = 0.75f;
+	public static final float TOTE_INTAKE_MOTOR_SPEED = 0.15f;
 	public static final int TOTE_INTAKE_SENSOR_PORT = 0;
 	
 	public static final int DRIVE_BASE_FRONT_LEFT = 0;
