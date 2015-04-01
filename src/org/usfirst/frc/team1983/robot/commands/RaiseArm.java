@@ -9,19 +9,20 @@ public class RaiseArm extends Command {
 	ArmPosition pos;
 
 	public enum ArmPosition {
-		RAISE, LOWER
+		UP, DOWN
 	}
 
 	public RaiseArm(ArmPosition pos) {
+		requires(Robot.armLifter);
 		this.pos = pos;
 	}
 
 	@Override
 	protected void initialize() {
-		Robot.cangrabber.getPID().setSetpoint(
-				pos == ArmPosition.LOWER ? RobotMap.CAN_GRABBER_GROUND_POINT
-						: RobotMap.CAN_GRABBER_UP_POINT);
-		Robot.cangrabber.getPID().enable();
+		Robot.armLifter.getPID().setSetpoint(
+				pos == ArmPosition.DOWN ? RobotMap.CAN_LIFTER_DOWN_POSITION
+						: RobotMap.CAN_LIFTER_UP_POSITION);
+		Robot.armLifter.getPID().enable();
 	}
 
 	@Override
@@ -31,17 +32,15 @@ public class RaiseArm extends Command {
 
 	@Override
 	protected boolean isFinished() {
-		return Robot.cangrabber.getPID().getError() < RobotMap.CAN_GRABBER_PID_TOLERANCE;
+		return true;
 	}
 
 	@Override
 	protected void end() {
-		Robot.cangrabber.getPID().disable();
 	}
 
 	@Override
 	protected void interrupted() {
-		Robot.cangrabber.getPID().disable();
 	}
 
 }

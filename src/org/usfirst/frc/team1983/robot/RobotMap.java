@@ -46,6 +46,10 @@ public class RobotMap {
 	public static final double TOTE_LIFTER_CARRY_HEIGHT = 0;
 	public static final double TOTE_LIFTER_FLOOR_LOAD_HEIGHT = 0;
 	public static final double TOTE_LIFTER_LOAD_HEIGHT = 0;
+	public static final int TOTE_LIFTER_MAG_SENSOR_PORT = 0;
+
+	public static final double CAN_LIFTER_UP_POSITION = 0;
+	public static final double CAN_LIFTER_DOWN_POSITION = 0;
 	
 	public static final int CAN_LIFTER_LEFT_PORT = 6;
 	public static final int CAN_LIFTER_RIGHT_PORT = 7;
@@ -73,4 +77,5 @@ public class RobotMap {
 	
 	public static final double OI_JOYSTICK_DRIVE_DEADBAND = 0.05;
 	public static final double OI_JOYSTICK_ROT_DEADBAND = 0.15;
+	public static final double TOTE_LIFTER_TICKS_PER_INCH = 64;
 }

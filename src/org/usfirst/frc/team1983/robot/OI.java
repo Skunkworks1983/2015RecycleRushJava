@@ -2,6 +2,10 @@ package org.usfirst.frc.team1983.robot;
 
 import org.usfirst.frc.team1983.com.AnalogRangeIOButton;
 import org.usfirst.frc.team1983.robot.commands.ActuateCanStabilizer;
+import org.usfirst.frc.team1983.robot.commands.LiftToHeight;
+import org.usfirst.frc.team1983.robot.commands.BurgleTheCan;
+import org.usfirst.frc.team1983.robot.commands.RaiseArm;
+import org.usfirst.frc.team1983.robot.commands.RaiseArm.ArmPosition;
 import org.usfirst.frc.team1983.robot.commands.RunIntake;
 
 import edu.wpi.first.wpilibj.Joystick;

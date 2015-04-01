@@ -33,9 +33,7 @@ public class ArmLifter extends Subsystem implements PIDSource, PIDOutput {
 	}
 
 	@Override
-	protected void initDefaultCommand() {
-
-	}
+	protected void initDefaultCommand() {	}
 
 	@Override
 	public void pidWrite(double output) {
