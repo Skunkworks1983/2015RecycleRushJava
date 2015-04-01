@@ -2,21 +2,20 @@ package org.usfirst.frc.team1983.robot.commands;
 
 import org.usfirst.frc.team1983.robot.Robot;
 import org.usfirst.frc.team1983.robot.RobotMap;
-import org.usfirst.frc.team1983.robot.subsystems.Elevator.ElevatorHeight;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 public class GoToHeight extends Command {
 
-	private ElevatorHeight desired;
+	private double setPoint;
 
-	public GoToHeight(ElevatorHeight desired) {
-		this.desired = desired;
+	public GoToHeight(double setPoint) {
+		this.setPoint = setPoint;
 	}
 
 	@Override
 	protected void initialize() {
-		Robot.elevator.setPID(desired.val);
+		Robot.elevator.setSetPoint(setPoint);
 		Robot.elevator.getPID().enable();
 	}
 

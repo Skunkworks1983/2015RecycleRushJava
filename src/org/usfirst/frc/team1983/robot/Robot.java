@@ -1,9 +1,9 @@
 
 package org.usfirst.frc.team1983.robot;
 
-import org.usfirst.frc.team1983.robot.subsystems.CanGrabber;
+import org.usfirst.frc.team1983.robot.subsystems.ArmLifter;
 import org.usfirst.frc.team1983.robot.subsystems.DriveBase;
-import org.usfirst.frc.team1983.robot.subsystems.Elevator;
+import org.usfirst.frc.team1983.robot.subsystems.ToteLifter;
 import org.usfirst.frc.team1983.robot.subsystems.Pneumatics;
 import org.usfirst.frc.team1983.robot.subsystems.ToteIntake;
 
@@ -23,8 +23,8 @@ public class Robot extends IterativeRobot {
 	public static ToteIntake toteintake;
 	public static DriveBase drivebase;
 	public static OI oi;
-	public static Elevator elevator;
-	public static CanGrabber cangrabber;
+	public static ToteLifter elevator;
+	public static ArmLifter cangrabber;
 	public static Pneumatics pneumatics;
 	
     Command autonomousCommand;
@@ -37,8 +37,8 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		toteintake = new ToteIntake();
 		drivebase = new DriveBase();
-		elevator = new Elevator();
-		cangrabber = new CanGrabber();
+		elevator = new ToteLifter();
+		cangrabber = new ArmLifter();
 		pneumatics = new Pneumatics();
 	}
 	

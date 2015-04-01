@@ -33,26 +33,28 @@ public class RobotMap {
 	
 	public static final int ELEVATOR_MOTOR_LEFT_PORT = 4;
 	public static final int ELEVATOR_MOTOR_RIGHT_PORT = 5;
-	public static final int ELEVATOR_ENCODER_PORT_1 = 1;
-	public static final int ELEVATOR_ENCODER_PORT_2 = 2;
+	public static final int ELEVATOR_ENCODER_PORT_A = 1;
+	public static final int ELEVATOR_ENCODER_PORT_B = 1;
 	
 	public static final float ELEVATOR_PID_TERM_P = 0;
 	public static final float ELEVATOR_PID_TERM_I = 0;
 	public static final float ELEVATOR_PID_TERM_D = 0;
 	public static final double ELEVATOR_PID_TOLERANCE = 0;
 	
-	public static final int CAN_GRABBER_MOTOR_LEFT_PORT = 6;
-	public static final int CAN_GRABBER_MOTOR_RIGHT_PORT = 7;
+	public static final double TOTE_LIFTER_FLOOR_HEIGHT = 0;
+	public static final double TOTE_LIFTER_CARRY_HEIGHT = 0;
+	public static final double TOTE_LIFTER_FLOOR_LOAD_HEIGHT = 0;
+	public static final double TOTE_LIFTER_LOAD_HEIGHT = 0;
+
+	
+	public static final int CAN_LIFTER_LEFT_PORT = 6;
+	public static final int CAN_LIFTER_RIGHT_PORT = 7;
+	
 	public static final float CAN_GRABBER_PID_TERM_P = 0;
 	public static final float CAN_GRABBER_PID_TERM_I = 0;
 	public static final float CAN_GRABBER_PID_TERM_D = 0;
+	
 	public static final int CAN_GRABBER_ANALOG_INPUT_PORT = 0;
-	public static final double CAN_GRABBER_GROUND_POINT = 0;
-	public static final double CAN_GRABBER_UP_POINT = 10;
-	public static final double CAN_GRABBER_PID_TOLERANCE = 3.1415926535;
-	public static final int CAN_GRABBER_MEC_LEFT_MOTOR_PORT = 7;
-	public static final int CAN_GRABBER_MEC_RIGHT_MOTOR_PORT = 7;
-	public static final double CAN_GRABBER_MEC_MOTOR_SPEED = 1;
 	
 	public static final int CAN_INTAKE_LEFT_PORT = 11;
 	public static final int CAN_INTAKE_RIGHT_PORT = 4;

@@ -5,7 +5,6 @@ import org.usfirst.frc.team1983.robot.commands.GrabCan;
 import org.usfirst.frc.team1983.robot.commands.RaiseArm;
 import org.usfirst.frc.team1983.robot.commands.RaiseArm.ArmPosition;
 import org.usfirst.frc.team1983.robot.commands.RunIntake;
-import org.usfirst.frc.team1983.robot.subsystems.Elevator.ElevatorHeight;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -45,7 +44,7 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
 
-	private Button goToFloor, goToScore, goToTote, goToCan;		//elevator buttons
+	private Button goToFloor, goToCarry, goToFloorLoader, goToLoad;		//elevator buttons
 	private Button lowerArm, raiseArm, grabCan;					//CanGrabber Arm buttons
 	private Button toteIntakeOvr;
 	private Button pushStackOut;
@@ -56,9 +55,9 @@ public class OI {
 		rightStick = new Joystick(2);
 		
 		goToFloor = new JoystickButton(leftStick, 1);
-		goToScore = new JoystickButton(leftStick, 2);
-		goToTote = new JoystickButton(leftStick, 3);
-		goToCan = new JoystickButton(leftStick, 4);
+		goToCarry = new JoystickButton(leftStick, 3);
+		goToFloorLoader = new JoystickButton(leftStick, 4);
+		goToLoad= new JoystickButton(leftStick, 5);
 		
 		lowerArm = new JoystickButton(leftStick, 5);
 		raiseArm = new JoystickButton(leftStick, 6);
@@ -68,10 +67,10 @@ public class OI {
 		
 		pushStackOut = new JoystickButton(leftStick, 9);
 		
-		goToFloor.whenPressed(new GoToHeight(ElevatorHeight.FLOOR));
-		goToScore.whenPressed(new GoToHeight(ElevatorHeight.SCORE));
-		goToTote.whenPressed(new GoToHeight(ElevatorHeight.TOTE));
-		goToCan.whenPressed(new GoToHeight(ElevatorHeight.CAN));
+		goToFloor.whenPressed(new GoToHeight(RobotMap.TOTE_LIFTER_FLOOR_HEIGHT));
+		goToCarry.whenPressed(new GoToHeight(RobotMap.TOTE_LIFTER_CARRY_HEIGHT));
+		goToFloorLoader.whenPressed(new GoToHeight(RobotMap.TOTE_LIFTER_FLOOR_LOAD_HEIGHT));
+		goToLoad.whenPressed(new GoToHeight(RobotMap.TOTE_LIFTER_LOAD_HEIGHT));
 		
 		lowerArm.whenPressed(new RaiseArm(ArmPosition.LOWER));
 		raiseArm.whenPressed(new RaiseArm(ArmPosition.RAISE));
