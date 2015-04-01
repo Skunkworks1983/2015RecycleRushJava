@@ -1,5 +1,6 @@
 package org.usfirst.frc.team1983.robot;
 
+import org.usfirst.frc.team1983.com.AnalogRangeIOButton;
 import org.usfirst.frc.team1983.robot.commands.GoToHeight;
 import org.usfirst.frc.team1983.robot.commands.GrabCan;
 import org.usfirst.frc.team1983.robot.commands.RaiseArm;
@@ -9,7 +10,6 @@ import org.usfirst.frc.team1983.robot.commands.RunIntake;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -44,47 +44,72 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
 
-	private Button goToFloor, goToCarry, goToFloorLoader, goToLoad;		//elevator buttons
-	private Button lowerArm, raiseArm, grabCan;					//CanGrabber Arm buttons
-	private Button toteIntakeOvr;
-	private Button pushStackOut;
-	private Joystick leftStick, rightStick;
+	private static final int OPERATOR_PORT = 2;
+
+	private Joystick joystickLeft, joystickRight, op;
+	private JoystickButton canArms, canCollectFwd, canCollectRvs,
+			canToCraaawTransfer, craaawToggle, toggleAutoZone;
+	private JoystickButton alignToteFwd, alignToteRvs, loadPos, floorPos;
+	private AnalogRangeIOButton floorLoader, carryPos, score;
+	private JoystickButton canArmOverrideUp, canArmOverrideDown, wristOverride,
+			toteLifterUp, toteLifterDown, zeroLifter;
+	private JoystickButton moveArmsWhackMode, toteLifterUpDriver,
+			toteLifterDownDriver, toteIndexFwd, toteIndexRv, wristToggleDriver;
 
 	OI() {
-		leftStick = new Joystick(1);
-		rightStick = new Joystick(2);
-		
-		goToFloor = new JoystickButton(leftStick, 1);
-		goToCarry = new JoystickButton(leftStick, 3);
-		goToFloorLoader = new JoystickButton(leftStick, 4);
-		goToLoad= new JoystickButton(leftStick, 5);
-		
-		lowerArm = new JoystickButton(leftStick, 5);
-		raiseArm = new JoystickButton(leftStick, 6);
-		grabCan = new JoystickButton(leftStick, 7);
+		joystickLeft = new Joystick(0);
+		joystickRight = new Joystick(1);
+		op = new Joystick(OPERATOR_PORT);
 
-		toteIntakeOvr = new JoystickButton(leftStick, 8);
-		
-		pushStackOut = new JoystickButton(leftStick, 9);
-		
-		goToFloor.whenPressed(new GoToHeight(RobotMap.TOTE_LIFTER_FLOOR_HEIGHT));
-		goToCarry.whenPressed(new GoToHeight(RobotMap.TOTE_LIFTER_CARRY_HEIGHT));
-		goToFloorLoader.whenPressed(new GoToHeight(RobotMap.TOTE_LIFTER_FLOOR_LOAD_HEIGHT));
-		goToLoad.whenPressed(new GoToHeight(RobotMap.TOTE_LIFTER_LOAD_HEIGHT));
-		
-		lowerArm.whenPressed(new RaiseArm(ArmPosition.LOWER));
-		raiseArm.whenPressed(new RaiseArm(ArmPosition.RAISE));
-		grabCan.whenPressed(new GrabCan());
-		
-		toteIntakeOvr.whenPressed(new RunIntake());		
+		// Can getting
+		canArms = new JoystickButton(op, 11);
+		canCollectFwd = new JoystickButton(op, 13);
+		canCollectRvs = new JoystickButton(op, 12);
+		canToCraaawTransfer = new JoystickButton(op, 10);
+		craaawToggle = new JoystickButton(op, 14);
+		toggleAutoZone = new JoystickButton(joystickLeft, 2);
+
+		// Tote stacking
+		alignToteFwd = new JoystickButton(op, 7);
+		alignToteRvs = new JoystickButton(op, 8);
+		loadPos = new JoystickButton(op, 6);
+		floorPos = new JoystickButton(op, 5);
+
+		// Scoring
+		floorLoader = new AnalogRangeIOButton(OPERATOR_PORT,
+				Joystick.AxisType.kX, 0.5f, 0.9f);
+		carryPos = new AnalogRangeIOButton(OPERATOR_PORT, Joystick.AxisType.kX,
+				-0.25f, 0.25f);
+		score = new AnalogRangeIOButton(OPERATOR_PORT, Joystick.AxisType.kX,
+				-1.0f, -0.4f);
+
+		// Overrides
+		canArmOverrideUp = new JoystickButton(op, 3);
+		canArmOverrideDown = new JoystickButton(op, 4);
+		wristOverride = new JoystickButton(op, 2);
+		toteLifterUp = new JoystickButton(op, 9);
+		toteLifterDown = new JoystickButton(op, 15);
+		zeroLifter = new JoystickButton(op, 16);
+
+		// Driver buttons
+		moveArmsWhackMode = new JoystickButton(joystickLeft, 1);
+		toteLifterUpDriver = new JoystickButton(joystickLeft, 4);
+		toteLifterDownDriver = new JoystickButton(joystickLeft, 5);
+		toteIndexFwd = new JoystickButton(joystickRight, 5);
+		toteIndexRv = new JoystickButton(joystickRight, 3);
+		wristToggleDriver = new JoystickButton(joystickRight, 1);
 	}
-	
-	public Joystick getLeftJoystick(){
-		return leftStick;
+
+	public void registerButtonListeners() {
+		// TODO add button listeners when we have actual commands
 	}
-	
-	public Joystick getRightJoystick(){
-		return rightStick;
+
+	public Joystick getLeftJoystick() {
+		return joystickLeft;
+	}
+
+	public Joystick getRightJoystick() {
+		return joystickRight;
 	}
 
 }

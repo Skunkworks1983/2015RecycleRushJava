@@ -9,7 +9,7 @@ public class GrabCan extends Command {
 
 	@Override
 	protected void initialize() {
-		Robot.cangrabber.getRightMecMotor().set(
+		Robot.cangrabber.().set(
 				RobotMap.CAN_GRABBER_MEC_MOTOR_SPEED);
 	}
 
