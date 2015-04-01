@@ -2,6 +2,7 @@
 package org.usfirst.frc.team1983.robot;
 
 import org.usfirst.frc.team1983.robot.subsystems.ArmLifter;
+import org.usfirst.frc.team1983.robot.subsystems.Claw;
 import org.usfirst.frc.team1983.robot.subsystems.DriveBase;
 import org.usfirst.frc.team1983.robot.subsystems.ToteLifter;
 import org.usfirst.frc.team1983.robot.subsystems.Pneumatics;
@@ -26,6 +27,7 @@ public class Robot extends IterativeRobot {
 	public static ToteLifter elevator;
 	public static ArmLifter cangrabber;
 	public static Pneumatics pneumatics;
+	public static Claw claw;
 	
     Command autonomousCommand;
 
@@ -40,6 +42,7 @@ public class Robot extends IterativeRobot {
 		elevator = new ToteLifter();
 		cangrabber = new ArmLifter();
 		pneumatics = new Pneumatics();
+		claw = new Claw();
 	}
 	
 	public void disabledPeriodic() {

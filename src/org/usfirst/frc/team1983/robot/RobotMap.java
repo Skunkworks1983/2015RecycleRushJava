@@ -18,6 +18,7 @@ public class RobotMap {
 	
 	public static final int TOTE_INTAKE_MOTOR_PORT = 0;
 	public static final float TOTE_INTAKE_MOTOR_SPEED = 0.15f;
+	public static final float TOTE_INTAKE_MOTOR_FULL = 0.15f;
 	public static final int TOTE_INTAKE_SENSOR_PORT = 0;
 	
 	public static final int DRIVE_BASE_FRONT_LEFT = 0;
@@ -45,7 +46,6 @@ public class RobotMap {
 	public static final double TOTE_LIFTER_CARRY_HEIGHT = 0;
 	public static final double TOTE_LIFTER_FLOOR_LOAD_HEIGHT = 0;
 	public static final double TOTE_LIFTER_LOAD_HEIGHT = 0;
-
 	
 	public static final int CAN_LIFTER_LEFT_PORT = 6;
 	public static final int CAN_LIFTER_RIGHT_PORT = 7;
