@@ -92,9 +92,9 @@ public class DriveBase extends Subsystem implements PIDOutput, PIDSource {
 			backRight /= max;
 		}
 		
-		setMotor(MotorSide.FRONTLEFT, frontLeft);
+		setMotor(MotorSide.FRONTLEFT, -frontLeft);
 		setMotor(MotorSide.FRONTRIGHT, frontRight);
-		setMotor(MotorSide.BACKLEFT, backLeft);
+		setMotor(MotorSide.BACKLEFT, -backLeft);
 		setMotor(MotorSide.BACKRIGHT, backRight);
 	}
 	

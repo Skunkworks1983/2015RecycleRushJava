@@ -25,7 +25,7 @@ public class BurgleTheCan extends Command {
 
 	@Override
 	protected boolean isFinished() {
-		return false;
+		return true;
 	}
 
 	@Override
