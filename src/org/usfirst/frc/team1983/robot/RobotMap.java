@@ -25,6 +25,7 @@ public class RobotMap {
 	public static final int DRIVE_BASE_FRONT_RIGHT = 1;
 	public static final int DRIVE_BASE_BACK_LEFT = 2;
 	public static final int DRIVE_BASE_BACK_RIGHT = 3;
+	public static final double DRIVE_TICKS_PER_INCH = 0;
 	public static final double DRIVE_P = 3.0;
 	public static final double DRIVE_I = 0.0;
 	public static final double DRIVE_D = 5.0;
@@ -78,4 +79,5 @@ public class RobotMap {
 	public static final double OI_JOYSTICK_DRIVE_DEADBAND = 0.05;
 	public static final double OI_JOYSTICK_ROT_DEADBAND = 0.15;
 	public static final double TOTE_LIFTER_TICKS_PER_INCH = 64;
+	public static final int DRIVE_DISTANCE_COUNT_IS_STOPPPED = 0;
 }
